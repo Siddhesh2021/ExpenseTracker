@@ -10,6 +10,18 @@ logger = logging.getLogger(__name__)
 router = APIRouter()
 
 
+@router.get("/")
+def root() -> JSONResponse:
+    return JSONResponse(
+        {
+            "name": "ExpenseTracker",
+            "status": "ok",
+            "health": "/health",
+            "webhook": "/webhook",
+        }
+    )
+
+
 @router.get("/health")
 def health() -> JSONResponse:
     try:
